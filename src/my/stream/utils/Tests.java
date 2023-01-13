@@ -12,6 +12,9 @@ public class Tests {
 
     private static final String[] NUMBERS = {"1, 2, 0", "7, 5", "3, 9", "8, 4, 6"};
 
+    private static final int FIRSTX = 1514;
+
+
     public static void main(String[] args) {
 
         //task 1
@@ -24,10 +27,9 @@ public class Tests {
         System.out.println(MyStreamUtils.weirdArraysNumbersGetAndSort(NUMBERS));
 
         //task 4
-        System.out.println(MyStreamUtils.linearCongruentialGeneration(25214903917l, 11l, 2^48l));
+//        MyStreamUtils.linearCongruentialGeneration(FIRSTX);
 
         //task 5
         System.out.println(MyStreamUtils.zip(NAMES.stream(), Arrays.stream(NUMBERS)).collect(Collectors.toList()));
-
     }
 }

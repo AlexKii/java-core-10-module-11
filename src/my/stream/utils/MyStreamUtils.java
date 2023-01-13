@@ -34,10 +34,11 @@ public class MyStreamUtils {
                 .collect(Collectors.joining(", ", "\"", "\""));
     }
 
-    public static long linearCongruentialGeneration(long a, long c, long m) {
+    public static void linearCongruentialGeneration(long firstX) {
 
-        System.out.println("Linear congruential generation is here");
-        return a;
+        LCG r = new LCG(firstX);
+        LongStream.iterate(firstX, (seed) -> r.next())
+                .forEach(System.out::println);
     }
 
     public static <T> Stream<T> zip(Stream<T> first, Stream<T> second) {
@@ -48,7 +49,6 @@ public class MyStreamUtils {
         return Stream.of(f, s)
                 .flatMap(List::stream)
                 .sorted(Comparator.comparingInt(it -> f.indexOf(it) + s.indexOf(it)))
-                .limit(f.size() > s.size() ? s.size() * 2L : f.size() * 2L);
+                .limit(f.size() >= s.size() ? s.size() * 2L : f.size() * 2L);
     }
-
 }
